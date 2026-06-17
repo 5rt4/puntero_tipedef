@@ -3,18 +3,13 @@
 #include <stdint.h>
 #include "stm32f103xb.h"
 typedef struct {
-GPIO_TypeDef* puerto;   //Qué puerto es
-unsigned int pin;       //Número de pin
-unsigned int config;    //Configuracion del pin. 0:Salida;1:Entrada Flotante;2:Entrada PU;3:entrada PD
-unsigned int estPin;    //Estado del pin
+GPIO_TypeDef* puerto;            //Qué puerto es
+unsigned int pin_entradas[8];    //pines de entradas
+unsigned int pin_seleccion[3];   //pines de seleccion
+unsigned int pin_salida;         //pin de salida
 } configuracion_t;
 void gpio_config(configuracion_t*);
-void gpio_on_off(configuracion_t*);
-int gpio_estado(configuracion_t*);
+void gpio_seleccion(configuracion_t*);
 
-GPIO_TypeDef* puerto;   //Qué puerto es
-unsigned int pin;       //Número de pin
-unsigned int config;    //Configuracion del pin. 0:Salida;1:Entrada Flotante;2:Entrada PU;3:entrada PD
-unsigned int estPin;    //Estado del pin
-} configuracion_t;
+
 #endif
